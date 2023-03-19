@@ -1,0 +1,89 @@
+﻿@page
+@model WebApplicationStandAuto.Pages.standModel
+@{
+}
+
+<h1>Stand/Automóveis em Stand</h1>
+
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Cor</th>
+        <th>Fonte de Energia</th>
+        <th>Matricula</th>
+        <th>Preço de Compra</th>
+        <th>Data de compra</th>
+        <th>Km</th>
+        <th>Preço para Venda</th>
+    </tr>
+
+    @foreach (var item in Model.stand)
+    {
+        <tr>
+            <form method="Post">
+                <input class="form-control" type="hidden" name="operacao" value="vender" />
+
+            <td>
+                <input class="form-control" type="hidden" id="idcarros" name="idCarros" value="@Html.DisplayFor(modelItem => item.idCarros)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.idCarros)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="marca" name="marca" value="@Html.DisplayFor(modelItem => item.marca)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.marca)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="modelo" name="modelo" value="@Html.DisplayFor(modelItem => item.modelo)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.modelo)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="ano" name="ano" value="@Html.DisplayFor(modelItem => item.ano)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.ano)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="cor" name="cor" value="@Html.DisplayFor(modelItem => item.cor)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.cor)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="fonte_energia" name="fonte_energia" value="@Html.DisplayFor(modelItem => item.fonte_energia)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.fonte_energia)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="matricula" name="matricula" value="@Html.DisplayFor(modelItem => item.matricula)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.matricula)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="preco_compra" name="preco_compra" value="@Html.DisplayFor(modelItem => item.preco_compra)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.preco_compra)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="data_compra" name="data_compra" value="@Html.DisplayFor(modelItem => item.data_compra)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.data_compra)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="quilometros" name="quilometros" value="@Html.DisplayFor(modelItem => item.quilometros)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.quilometros)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="preco_venda" name="preco_venda" value="@Html.DisplayFor(modelItem => item.preco_venda)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.preco_venda)" disabled />
+            </td>
+            <td>
+                <input class="btn btn-success" type="submit" value="Vender" onclick="return confirm('Automóvel vai passar para a tabela Vendas. Quer mesmo fazer a alteração?')" />
+            </td>
+            </form>
+            <td>
+                <form method="Post">
+                    <input type="hidden" name="operacao" value="delete" />
+                    <input type="hidden" name="idCarros" id="idCarros" value="@Html.DisplayFor(modelItem => item.idCarros)" />
+
+                    <input class="btn btn-danger" type="submit" value="Apagar" onclick="return confirm('Quer mesmo fazer a alteração?')" />
+                </form>
+            </td>
+           
+        </tr>
+    }
+</table>

@@ -1,0 +1,107 @@
+﻿@page
+@model WebApplicationStandAuto.Pages.comprasModel
+@{
+}
+<h2>Pesquisas</h2>
+<form method="POST">
+    <label for="search-select">Escolha a Pesquisa:</label>
+    <select name="operacao" id="operacao">
+        <option value="searchByMarca">--Escolha uma opção--</option>
+        <option value="searchByMarca">Marca</option>
+        <option value="searchByModelo">Modelo</option>
+        <option value="searchByAno2">Ano</option>
+        <option value="searchByCor">Cor</option>
+        <option value="searchByFonte">Fonte de Energia</option>
+        <option value="searchByMatricula">Matricula</option>
+        <option value="searchByKM">Quilómetros</option>
+        <option value="searchByPreco">Preço</option>    
+    </select>
+    <input class="form-control" type="text" name="caixa" id="caixa" placeholder="Escreva a pesquisa" />
+    <input class="btn btn-primary" type="submit" value="Pesquisar" />
+</form>
+@if (Model.ErrorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.ErrorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+@if (Model.ErrorMessage2.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.ErrorMessage2</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+@if (Model.ErrorMessage3.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.ErrorMessage3</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+<a asp-area="" asp-page="/compras">Voltar</a>
+<h1>Compras</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Cor</th>
+        <th>Fonte de Energia</th>
+        <th>Matricula</th>
+        <th>Quilómetros</th>
+        <th>Preço</th>
+    </tr>
+
+    @foreach (var item in Model.compras)
+    {
+        <tr>
+            <form method="Post">
+                <input class="form-control" type="hidden" name="operacao" value="Comprar" />
+        
+            <td>
+                <input class="form-control" type="hidden" id="idCompras" name="idCompras" value="@Html.DisplayFor(modelItem => item.idCompras)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.idCompras)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="marca" name="marca" value="@Html.DisplayFor(modelItem => item.marca)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.marca)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="modelo" name="modelo" value="@Html.DisplayFor(modelItem => item.modelo)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.modelo)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="ano" name="ano" value="@Html.DisplayFor(modelItem => item.ano)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.ano)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="cor" name="cor" value="@Html.DisplayFor(modelItem => item.cor)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.cor)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="fonte_energia" name="fonte_energia" value="@Html.DisplayFor(modelItem => item.fonte_energia)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.fonte_energia)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="matricula" name="matricula" value="@Html.DisplayFor(modelItem => item.matricula)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.matricula)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="quilometros" name="quilometros" value="@Html.DisplayFor(modelItem => item.quilometros)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.quilometros)" disabled />
+            </td>
+            <td>
+                <input class="form-control" type="hidden" id="preco" name="preco" value="@Html.DisplayFor(modelItem => item.preco)" />
+                <input class="form-control" type="text" value="@Html.DisplayFor(modelItem => item.preco)" disabled />
+            </td>
+            <td>
+                <input class="btn btn-success" type="submit" value="Comprar" onclick="return confirm('Automóvel vai passar para o Stand. Quer mesmo fazer a alteração? Se sim depois atualize o preço para venda.')" />
+            </td>
+            </form>
+        </tr>
+    }
+</table>
