@@ -1,6 +1,6 @@
 ﻿namespace WebApplicationStandAuto.Models;
 
-public class stand
+public class stand   // Definição das variaveis que fazem parte da tabela stand.
 {
     private comprasContext context;
 

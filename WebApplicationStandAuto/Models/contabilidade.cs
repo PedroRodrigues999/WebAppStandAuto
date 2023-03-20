@@ -1,6 +1,6 @@
 ﻿namespace WebApplicationStandAuto.Models
 {
-    public class contabilidade
+    public class contabilidade  // Definição das variaveis que fazem parte da tabela congabilidade.
     {
 
         private comprasContext context;

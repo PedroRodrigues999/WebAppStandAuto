@@ -1,6 +1,6 @@
 ﻿namespace WebApplicationStandAuto.Models;
 
-public class vendas
+public class vendas  // Definição das variaveis que fazem parte da tabela venas.
 {
     private comprasContext context;
 

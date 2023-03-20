@@ -20,11 +20,11 @@ namespace WebApplicationStandAuto.Pages
         {
            
 
-                stand Stand = new stand();
+                stand Stand = new stand(); // Criação de objeto stand 
 
-                Stand.marca = Request.Form["marca"];
+                Stand.marca = Request.Form["marca"];  // Adiciona o valor da caixa de texto a cada varivel do Objeto stad criado. 
                 Stand.modelo = Request.Form["modelo"];
-                try 
+                try                                        // Estrutura try catch para proteção de erros ou dados mal inseridos.
                 { 
                 Stand.ano = Int32.Parse(Request.Form["ano"]); 
                 }
@@ -70,7 +70,7 @@ namespace WebApplicationStandAuto.Pages
                 }
                 comprasContext context = new comprasContext();
 
-                context.createStand(Stand);
+                context.createStand(Stand); // chama o metódo createStand e envia o objeto stand com as variveis inseridas nele. Ver metódo em comprasContext.cs  
 
                 OnGet();
         }   

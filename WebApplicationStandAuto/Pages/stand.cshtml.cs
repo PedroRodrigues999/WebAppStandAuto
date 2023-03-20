@@ -14,7 +14,7 @@ namespace WebApplicationStandAuto.Pages
 
             comprasContext context = new comprasContext();
 
-            stand = context.GetAllstand();
+            stand = context.GetAllstand(); // Ao abrir a pagina vai buscar os dados da tabela stand graças ao metódo GetAllstand que está no comprasContext.cs
 
         }
 
@@ -25,8 +25,8 @@ namespace WebApplicationStandAuto.Pages
 
             
 
-            if (Request.Form["operacao"].Equals("vender"))
-            {
+            if (Request.Form["operacao"].Equals("vender"))  // Ao carregar em vender cria um novo objeto venda e adiciona as suas variaveis os elementos da tabela/Form  
+            {                                              // e cria assim um elemento/Carro na tabela vendas atraves do metódo create_vendas                     
                 vendas venda = new vendas();
 
                 
@@ -54,7 +54,7 @@ namespace WebApplicationStandAuto.Pages
             }
            else if (Request.Form["operacao"].Equals("delete"))
             {
-                context.deleteStand(Int32.Parse(Request.Form["idCarros"]));
+                context.deleteStand(Int32.Parse(Request.Form["idCarros"])); // Apaga o Carro selecionado atraves do metódo deleteStand que recebe idCarros que é o indentificador do carro a apagar.
 
                 OnGet();
             }

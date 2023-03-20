@@ -1,6 +1,6 @@
 ﻿namespace WebApplicationStandAuto.Models;
 
-public class compras
+public class compras // Definição das variaveis que fazem parte da tabela compras.
 {
     private comprasContext context;
 

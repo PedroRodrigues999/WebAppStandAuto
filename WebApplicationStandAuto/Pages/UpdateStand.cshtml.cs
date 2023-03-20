@@ -15,7 +15,7 @@ namespace WebApplicationStandAuto.Pages
         {
             comprasContext context = new comprasContext();
 
-            stand = context.GetAllstand();
+            stand = context.GetAllstand();  // Ao abrir a pagina vai buscar os dados da tabela stand graças ao metódo GetAllstand que está no comprasContext.cs
         }
 
         public void OnPost()
@@ -24,14 +24,14 @@ namespace WebApplicationStandAuto.Pages
 
             stand = context.GetAllstand();
 
-                if (Request.Form["operacao"].Equals("updateStand"))
-                {
+                if (Request.Form["operacao"].Equals("updateStand")) // Em updatestand é possivel alterar/atualizar as carecteristicas dos carros, 
+                {                                                      
 
                 try
                 {
-                    stand stand = new stand()
+                    stand stand = new stand()      //Cria novo objeto stand 
                     {
-                        idCarros = int.Parse(Request.Form["idCarros"]),
+                        idCarros = int.Parse(Request.Form["idCarros"]),  // recolhe valores do Form
                         marca = Request.Form["marca"],
                         modelo = Request.Form["modelo"],
                         ano = int.Parse(Request.Form["ano"]),
@@ -43,20 +43,20 @@ namespace WebApplicationStandAuto.Pages
                         preco_venda = Decimal.Parse(Request.Form["preco_venda"]),
                     };
 
-                    context.UpdateStand(stand);
+                    context.UpdateStand(stand); // Chama metódo UpdateStand que recebe os valores do Form e escreve esse novos valores na Base de dados 
 
                     OnGet();
                 }
-                catch (Exception ex)
+                catch (Exception ex)  // Estrutuda try Catch para proteção de dados mal inseridos.
                 {
                     ErrorMessage = ex.Message;
                     OnGet();
                     return;
                 }
                 }
-                else if (Request.Form["operacao"].Equals("delete"))
+                else if (Request.Form["operacao"].Equals("delete")) // Também é possivel apagar um Objeto Stand aqui
                 {
-                    context.deleteStand(Int32.Parse(Request.Form["idCarros"]));
+                    context.deleteStand(Int32.Parse(Request.Form["idCarros"])); // atraves do métódo deleteStand que recebe idCarros, seu identificador. 
                     OnGet();
                 }      
         }
